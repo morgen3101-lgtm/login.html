@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NEXORA - Social Network</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f3f5f9;
+    color: #222;
+}
+
+/* HEADER */
+
+header {
+    height: 70px;
+    background: white;
+    border-bottom: 1px solid #ddd;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 25px;
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: bold;
+    color: #5b5cf0;
+}
+
+.search {
+    width: 350px;
+}
+
+.search input {
+    width: 100%;
+    padding: 12px 18px;
+
+    border: none;
+    outline: none;
+
+    background: #f0f2f6;
+    border-radius: 25px;
+}
+
+.login {
+    background: #5b5cf0;
+    color: white;
+
+    text-decoration: none;
+
+    padding: 11px 18px;
+    border-radius: 10px;
+
+    font-weight: bold;
+}
+
+/* MAIN */
+
+.container {
+    max-width: 1200px;
+
+    margin: 30px auto;
+
+    display: grid;
+
+    grid-template-columns: 220px 1fr 250px;
+
+    gap: 20px;
+
+    padding: 0 20px;
+}
+
+/* SIDEBAR */
+
+.sidebar {
+    background: white;
+
+    padding: 15px;
+
+    border-radius: 18px;
+
+    height: fit-content;
+}
+
+.sidebar a {
+    display: block;
+
+    padding: 13px;
+
+    margin-bottom: 5px;
+
+    text-decoration: none;
+
+    color: #555;
+
+    border-radius: 10px;
+}
+
+.sidebar a:hover {
+    background: #eeeeff;
+
+    color: #5b5cf0;
+}
+
+/* CREATE POST */
+
+.card {
+    background: white;
+
+    padding: 20px;
+
+    border-radius: 18px;
+
+    margin-bottom: 20px;
+}
+
+textarea {
+    width: 100%;
+
+    min-height: 90px;
+
+    border: none;
+
+    outline: none;
+
+    resize: none;
+
+    background: #f2f3f7;
+
+    border-radius: 12px;
+
+    padding: 15px;
+
+    margin-top: 15px;
+}
+
+button {
+    border: none;
+
+    background: #5b5cf0;
+
+    color: white;
+
+    padding: 11px 20px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    margin-top: 12px;
+}
+
+/* POSTS */
+
+.post {
+    background: white;
+
+    padding: 20px;
+
+    border-radius: 18px;
+
+    margin-bottom: 20px;
+}
+
+.user {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+.avatar {
+    width: 45px;
+    height: 45px;
+
+    border-radius: 50%;
+
+    background: #5b5cf0;
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-weight: bold;
+}
+
+.post-text {
+    margin: 20px 0;
+
+    line-height: 1.6;
+}
+
+.actions {
+    border-top: 1px solid #eee;
+
+    padding-top: 12px;
+
+    display: flex;
+
+    gap: 10px;
+}
+
+.action {
+    background: transparent;
+
+    color: #555;
+
+    margin: 0;
+}
+
+.action:hover {
+    background: #f0f1f5;
+}
+
+/* RIGHT SIDEBAR */
+
+.right {
+    background: white;
+
+    padding: 20px;
+
+    border-radius: 18px;
+
+    height: fit-content;
+}
+
+.friend {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 18px;
+}
+
+.friend button {
+    margin: 0;
+
+    padding: 7px 10px;
+
+    font-size: 12px;
+}
+
+/* MOBILE */
+
+@media (max-width: 900px) {
+
+    .container {
+        grid-template-columns: 180px 1fr;
+    }
+
+    .right {
+        display: none;
+    }
+
+    .search {
+        width: 220px;
+    }
+}
+
+@media (max-width: 650px) {
+
+    header {
+        padding: 0 12px;
+    }
+
+    .search {
+        display: none;
+    }
+
+    .container {
+        display: block;
+
+        padding: 12px;
+
+        margin-top: 15px;
+    }
+
+    .sidebar {
+        margin-bottom: 15px;
+
+        display: flex;
+
+        overflow-x: auto;
+    }
+
+    .sidebar a {
+        white-space: nowrap;
+
+        margin-right: 5px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- HEADER -->
+
+<header>
+
+    <div class="logo">
+        NEXORA
+    </div>
+
+    <div class="search">
+
+        <input
+            type="text"
+            id="search"
+            placeholder="Search NEXORA..."
+        >
+
+    </div>
+
+    <a
+        href="#"
+        class="login"
+        onclick="login()"
+    >
+        Log In
+    </a>
+
+</header>
+
+
+<!-- MAIN -->
+
+<div class="container">
+
+
+    <!-- LEFT -->
+
+    <aside class="sidebar">
+
+        <a href="#">
+            🏠 Home
+        </a>
+
+        <a href="#">
+            👤 Profile
+        </a>
+
+        <a href="#">
+            👥 Friends
+        </a>
+
+        <a href="#">
+            💬 Messages
